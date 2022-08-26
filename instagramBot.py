@@ -27,8 +27,11 @@ def likeAndComm(): # Likes and Comments the first 9 posts
 	global posts
 	for y in range (1,4):
 		for x in range(1,4):
-			post = browser.find_element_by_xpath('/html/body/div[1]/section/main/div/div[1]/div/div['+str(y)+']/div['+str(x)+']') 
-			browser.implicitly_wait(1) 
+			post = browser.find_element_by_xpath(
+				f'/html/body/div[1]/section/main/div/div[1]/div/div[{str(y)}]/div[{str(x)}]'
+			)
+
+			browser.implicitly_wait(1)
 			post.click()
 			sleep(2)
 			postLike = browser.find_element_by_xpath('/html/body/div[6]/div[3]/div/article/div/div[2]/div/div/div[2]/section[1]/span[1]/button').click()
@@ -37,12 +40,12 @@ def likeAndComm(): # Likes and Comments the first 9 posts
 			#comment = browser.find_element_by_xpath('/html/body/div[4]/div[2]/div/article/div[3]/section[3]/div/form').click() 
 			print("click1")
 			sleep(3)
-			comment = browser.find_element_by_xpath('/html/body/div[6]/div[3]/div/article/div/div[2]/div/div/div[2]/section[3]/div/form/textarea').click() 
+			comment = browser.find_element_by_xpath('/html/body/div[6]/div[3]/div/article/div/div[2]/div/div/div[2]/section[3]/div/form/textarea').click()
 			print("click2")
-			comment = browser.find_element_by_xpath('/html/body/div[6]/div[3]/div/article/div/div[2]/div/div/div[2]/section[3]/div/form/textarea').send_keys(random.choice(comments))	
+			comment = browser.find_element_by_xpath('/html/body/div[6]/div[3]/div/article/div/div[2]/div/div/div[2]/section[3]/div/form/textarea').send_keys(random.choice(comments))
 			print("send1")
 			sleep(3)
-			sendComment = browser.find_element_by_xpath('/html/body/div[6]/div[3]/div/article/div/div[2]/div/div/div[2]/section[3]/div/form/button[2]') 
+			sendComment = browser.find_element_by_xpath('/html/body/div[6]/div[3]/div/article/div/div[2]/div/div/div[2]/section[3]/div/form/button[2]')
 			sendComment.click()
 			print("click3")
 			sleep(4)
@@ -50,8 +53,8 @@ def likeAndComm(): # Likes and Comments the first 9 posts
 			closePost=browser.find_element_by_xpath('/html/body/div[6]/div[1]/button')
 			closePost.click()
 			sleep(3)
-		print ('Nr. of posts: ' +str(posts))
-	
+		print(f'Nr. of posts: {str(posts)}')
+
 	sleep(5)
 	browser.get('https://www.instagram.com/explore/')
 	sleep(6)
